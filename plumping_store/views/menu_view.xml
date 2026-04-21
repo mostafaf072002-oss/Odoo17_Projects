@@ -1,0 +1,31 @@
+<odoo>
+    <menuitem id="plumbing_root"
+              name="Plumbing Store"
+              sequence="1"
+              web_icon="plumping_store/static/description/icon.png"/>
+
+    <menuitem id="menu_plumbing_dashboard"
+          name="Dashboard"
+          parent="plumbing_root"
+          action="action_plumbing_dashboard"
+          sequence="2"/>
+
+    <menuitem id="menu_products"
+              name="Products"
+              parent="plumbing_root"
+              action="product.product_template_action"
+              sequence="3"/>
+
+    <menuitem id="menu_sales"
+              name="Sales"
+              parent="plumbing_root"
+              action="sale.action_orders"
+              sequence="4"/>
+
+    <menuitem id="menu_purchase"
+              name="Purchase"
+              parent="plumbing_root"
+              action="purchase.purchase_form_action"
+              sequence="5"/>
+
+</odoo>

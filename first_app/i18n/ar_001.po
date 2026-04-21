@@ -1,0 +1,450 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* first_app
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-15 22:03+0000\n"
+"PO-Revision-Date: 2026-04-15 22:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.view_staff_kanban
+msgid "<span class=\"badge bg-success\">Low Salary</span>"
+msgstr "مرتب منخفض"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.view_staff_kanban
+msgid "<span class=\"badge bg-warning\">High Salary</span>"
+msgstr "مرتب عالي"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__active
+msgid "Active"
+msgstr "تفعيل"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_ids
+msgid "Activities"
+msgstr "انشطة"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__address
+msgid "Address"
+msgstr "العنوان"
+
+#. module: first_app
+#: model:ir.model.fields.selection,name:first_app.selection__staff_staff__city__alex
+msgid "Alexandria"
+msgstr "اسكندرية"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: first_app
+#: model:ir.actions.server,name:first_app.cron_auto_make_manager_ir_actions_server
+msgid "Auto Make Manager"
+msgstr "انشاء مدير تلقائي"
+
+#. module: first_app
+#: model:ir.model.fields.selection,name:first_app.selection__staff_staff__city__bani_suef
+msgid "Bani Suef"
+msgstr "بني سويف"
+
+#. module: first_app
+#: model:ir.model.fields.selection,name:first_app.selection__staff_staff__city__cairo
+msgid "Cairo"
+msgstr "القاهرة"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+msgid "Change City"
+msgstr "تغيير المحافظة"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__city
+msgid "City"
+msgstr "محافظة"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__create_uid
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__create_uid
+msgid "Created by"
+msgstr "انشات بواسطة"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__create_date
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__display_name
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__display_name
+msgid "Display Name"
+msgstr "عرض الاسم"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__email
+msgid "Email"
+msgstr "الايميل"
+
+#. module: first_app
+#: model:base.automation,name:first_app.auto_email_after_promotion
+msgid "Email After Promotion"
+msgstr "الايميل بعد الترقية"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.project_report_template
+msgid "Employee"
+msgstr "موظف"
+
+#. module: first_app
+#: model:ir.actions.server,name:first_app.action_email_after_promotion
+msgid "Execute Code"
+msgstr "تنفيذ الكود"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.manager_search_view
+msgid "Filters"
+msgstr "التصفيات"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_follower_ids
+msgid "Followers"
+msgstr "المتابعين"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.manager_search_view
+msgid "Group by"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__has_message
+msgid "Has Message"
+msgstr "الرسائل"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__id
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__id
+msgid "ID"
+msgstr "الكود"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_exception_icon
+msgid "Icon"
+msgstr "ايقون"
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__message_has_error
+#: model:ir.model.fields,help:first_app.field_staff_staff__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__image
+msgid "Image"
+msgstr "صورة"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.project_report_template
+msgid "Info"
+msgstr "معلومات"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__write_uid
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__write_date
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__manager
+#: model:ir.ui.menu,name:first_app.manager_menu_item_view
+msgid "Manager"
+msgstr "مدير"
+
+#. module: first_app
+#: model:ir.actions.act_window,name:first_app.manager_action
+#: model_terms:ir.ui.view,arch_db:first_app.manager_search_view
+msgid "Managers"
+msgstr "المديرين"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__name
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الاجراءات"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__number_of_children
+msgid "Number of Children"
+msgstr "عدد الاولاد"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الاخطاء"
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+msgid "Other Info"
+msgstr "معلومات اخري"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__phone
+msgid "Phone"
+msgstr "رقم الجوال"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_res_partner__price
+#: model:ir.model.fields,field_description:first_app.field_res_users__price
+msgid "Price"
+msgstr "السعر"
+
+#. module: first_app
+#: model:ir.model,name:first_app.model_project_project
+#: model_terms:ir.ui.view,arch_db:first_app.project_view_form
+msgid "Project"
+msgstr "مشروع"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.project_report_template
+msgid "Project Name"
+msgstr "اسم المشروع"
+
+#. module: first_app
+#: model:ir.actions.report,name:first_app.project_report_action
+#: model_terms:ir.ui.view,arch_db:first_app.project_report_template
+msgid "Project Report"
+msgstr "تقرير مشروع"
+
+#. module: first_app
+#: model:ir.actions.act_window,name:first_app.project_action
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__project_ids
+#: model:ir.ui.menu,name:first_app.project_menu
+#: model:ir.ui.menu,name:first_app.project_menu_item
+#: model_terms:ir.ui.view,arch_db:first_app.project_view_tree
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+msgid "Projects"
+msgstr "مشاريع"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__promotion_date
+msgid "Promotion Date"
+msgstr "تاريخ الترقي"
+
+#. module: first_app
+#: model:ir.model,name:first_app.model_res_partner
+msgid "Res Partner"
+msgstr "جهة الاتصال"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__activity_user_id
+msgid "Responsible User"
+msgstr "الشخص المسؤول"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__salary
+msgid "Salary"
+msgstr "المرتب"
+
+#. module: first_app
+#. odoo-python
+#: code:addons/first_app/models/employee.py:0
+#: model:ir.model.constraint,message:first_app.constraint_staff_staff_check_salary
+#, python-format
+msgid "Salary must be greater than zero."
+msgstr "المرتب يجب ان يكون اكبر من الصفر"
+
+#. module: first_app
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_tree
+msgid "Send Email"
+msgstr "ارسال الايميل"
+
+#. module: first_app
+#: model:ir.actions.server,name:first_app.show_managers_server_action
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+msgid "Show Managers"
+msgstr "المديرين"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_project_project__staff_id
+#: model:ir.model.fields,field_description:first_app.field_res_partner__staff_id
+#: model:ir.model.fields,field_description:first_app.field_res_users__staff_id
+#: model:ir.module.category,name:first_app.staff_category
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_form
+msgid "Staff"
+msgstr "موظف"
+
+#. module: first_app
+#: model:ir.ui.menu,name:first_app.staff_management_root_menu
+msgid "Staff Management"
+msgstr "ادراة الموظفين"
+
+#. module: first_app
+#: model:res.groups,name:first_app.staff_manager_group
+msgid "Staff Manager"
+msgstr "المدير"
+
+#. module: first_app
+#: model:ir.model,name:first_app.model_staff_staff
+msgid "Staff Table"
+msgstr "جدول الموظفين"
+
+#. module: first_app
+#: model:res.groups,name:first_app.staff_user_group
+msgid "Staff User"
+msgstr "مستخدم"
+
+#. module: first_app
+#: model:ir.actions.act_window,name:first_app.staff_action
+#: model:ir.ui.menu,name:first_app.staff_menu
+#: model:ir.ui.menu,name:first_app.staff_menu_item
+#: model_terms:ir.ui.view,arch_db:first_app.staff_view_tree
+msgid "Staffs"
+msgstr "الموظفين"
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.constraint,message:first_app.constraint_staff_staff_unique_email
+msgid "The Email Address Must Be Unique!"
+msgstr "الايميل يجب ان يكون فريد"
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,field_description:first_app.field_staff_staff__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: first_app
+#: model:ir.model.fields,help:first_app.field_staff_staff__website_message_ids
+msgid "Website communication history"
+msgstr ""

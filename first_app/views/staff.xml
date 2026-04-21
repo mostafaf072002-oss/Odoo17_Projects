@@ -1,0 +1,250 @@
+<odoo>
+
+    <!-- ================== Action ================== -->
+    <record id="staff_action" model="ir.actions.act_window">
+        <field name="name">Staffs</field>
+        <field name="res_model">staff.staff</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- ================== Menu ================== -->
+    <menuitem
+        id="staff_menu_item"
+        name="Staffs"
+        parent="staff_menu"
+        action="staff_action"
+    />
+
+    <!-- ================= Server Action ================= -->
+    <record id="show_managers_server_action" model="ir.actions.server">
+        <field name="name">Show Managers</field>
+        <field name="model_id" ref="model_staff_staff"/>
+        <field name="binding_model_id" ref="model_staff_staff"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.show_managers()
+        </field>
+    </record>
+
+    <!-- ================= automation Action ================= -->
+    <record id="cron_auto_make_manager" model="ir.cron">
+        <field name="name">Auto Make Manager</field>
+        <field name="model_id" ref="model_staff_staff"/>
+
+        <field name="state">code</field>
+        <field name="code">
+            model.auto_make_manager()
+        </field>
+
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">1</field>
+    </record>
+
+
+    <record id="action_email_after_promotion" model="ir.actions.server">
+        <field name="name">Send Promotion Email</field>
+        <field name="model_id" ref="model_staff_staff"/>
+        <field name="state">code</field>
+        <field name="code">
+            records.send_email()
+        </field>
+    </record>
+    <!-- ================= automation Action ================= -->
+    <record id="auto_email_after_promotion" model="base.automation">
+        <field name="name">Email After Promotion</field>
+        <field name="model_id" ref="model_staff_staff"/>
+        <field name="trigger">on_time</field>
+        <field name="filter_domain">[('manager','=',True)]</field>
+
+        <field name="trg_date_id" ref="field_staff_staff__promotion_date"/>
+        <field name="trg_date_range">7</field>
+        <field name="trg_date_range_type">day</field>
+
+        <!-- الربط هنا 👇 -->
+        <field name="action_server_ids" eval="[(4, ref('action_email_after_promotion'))]"/>
+    </record>
+
+
+    <!-- ================== Tree View ================== -->
+    <record id="staff_view_tree" model="ir.ui.view">
+        <field name="name">staff.staff.tree</field>
+        <field name="model">staff.staff</field>
+        <field name="arch" type="xml">
+            <tree string="Staffs"
+                    multi_edit="1"
+                    class="staff_tree">
+                <header>
+                    <button name="send_email"
+                            string="Send Email"
+                            class="btn-primary"
+                            type="object"/>
+                </header>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="salary"/>
+                <field name="city"/>
+                <field name="type"/>
+                <field name="project_ids"/>
+                <field name="manager"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="staff_view_form" model="ir.ui.view">
+        <field name="name">staff.staff.form</field>
+        <field name="model">staff.staff</field>
+        <field name="arch" type="xml">
+            <form string="Staff">
+                <sheet>
+                    <!-- Header -->
+                    <header>
+                        <button name="change_city"
+                                type="object"
+                                class="btn-primary"
+                                string="Change City"/>
+
+                        <button name="%(show_managers_server_action)d"
+                                type="action"
+                                string="Show Managers"
+                                class="btn-secondry"/>
+
+                        <button name="%(action_email_after_promotion)d"
+                                type="action"
+                                string="Send Email"
+                                class="btn-secondry"/>
+
+                        <field name="city" widget="statusbar"/>
+                    </header>
+
+                    <!-- Basic Info -->
+                    <group>
+                        <group>
+                            <field name="image"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="salary"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="number_of_children"/>
+                            <field name="manager"/>
+                        </group>
+                    </group>
+
+                    <!-- Tabs -->
+                    <notebook>
+
+                        <!-- ================= Projects Tab ================= -->
+                        <page string="Projects">
+
+                            <field name="project_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+
+                        </page>
+
+                        <!-- ================= Other Info Tab ================= -->
+                        <page string="Other Info">
+
+                            <group>
+                                <field name="type"/>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            <!-- Chatter -->
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
+
+        </form>
+        </field>
+    </record>
+
+    <!-- ================= Search ================= -->
+    <record id="manager_search_view" model="ir.ui.view">
+        <field name="name">Manager Search</field>
+        <field name="model">staff.staff</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+
+                <group string="Filters">
+                    <filter name="managers_filter" string="Managers" domain="[('manager','=',True)]"/>
+                </group>
+                <group string="Group by">
+                    <filter name="managers_filter" string="Managers" context="{'group_by':'manager'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="view_staff_kanban" model="ir.ui.view">
+    <field name="name">Kanban Staff</field>
+    <field name="model">staff.staff</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_view">
+
+    <field name="name"/>
+    <field name="email"/>
+    <field name="salary"/>
+    <field name="type"/>
+    <field name="image"/>
+
+    <templates>
+        <t t-name="kanban-box">
+            <div class="oe_kanban_global_click o_kanban_card">
+
+                <!-- 🖼️ الصورة -->
+            <div class="o_kanban_image">
+                <img t-att-src="kanban_image('staff.staff', 'image', record.id.raw_value)"
+                     style="width:100%; height:150px; object-fit:cover;"/>
+            </div>
+
+                <div class="p-2">
+                    <h4><field name="name"/></h4>
+                    <div><field name="email"/></div>
+                    <div>💰 <field name="salary"/></div>
+
+                    <!-- ✅ آمن 100% -->
+                    <t t-if="record.type and record.type.raw_value == 'High Salary'">
+                        <span class="badge bg-warning">High Salary</span>
+                    </t>
+
+                    <t t-if="record.type and record.type.raw_value == 'Low Salary'">
+                        <span class="badge bg-success">Low Salary</span>
+                    </t>
+
+                </div>
+
+            </div>
+        </t>
+    </templates>
+
+</kanban>
+    </field>
+</record>
+
+
+</odoo>

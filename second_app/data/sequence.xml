@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="task_sequence" model="ir.sequence">
+            <field name="name">Task Sequence.</field>
+            <field name="code">task_sequence</field>
+            <field name="prefix">T</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</odoo>

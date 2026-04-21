@@ -1,0 +1,43 @@
+<odoo>
+    <record id="product_sales_report" model="ir.actions.report">
+        <field name="name">Product Sales Report</field>
+        <field name="model">sale.order</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">plumping_store.report_product_sales</field>
+    </record>
+
+<template id="report_product_sales">
+    <t t-call="web.basic_layout">
+        <t t-call="web.external_layout">
+            <div class="page">
+            <h2 style="text-align:center;">Product Sales Report</h2>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Sales Count</th>
+                        <th>Total Sales</th>
+                        <th>Total Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs[0:1]" t-as="lines">
+                    <t t-foreach="lines.get_product_sales()['report_data']" t-as="line">
+                        <tr>
+                            <td><t t-esc="line['product_name']"/></td>
+                            <td><t t-esc="line['sales_count']"/></td>
+                            <td><t t-esc="line['total_sales']"/></td>
+                            <td><t t-esc="line['total_profit']"/></td>
+                        </tr>
+                    </t>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+    </t>
+</template>
+</odoo>

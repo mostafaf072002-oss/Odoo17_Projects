@@ -1,0 +1,33 @@
+plumbing_store/
+├── __init__.py
+├── __manifest__.py
+│
+├── models/
+│   ├── __init__.py
+│   ├── product.py
+│   └── sale.py
+│
+├── wizard/
+│   ├── __init__.py
+│   ├── quick_sale_wizard.py
+│   └── quick_sale_wizard.xml
+│
+├── controllers/
+│   ├── __init__.py
+│   └── api.py
+│
+├── security/
+│   ├── ir.model.access.csv
+│
+├── views/
+│   ├── menu.xml
+│   ├── product_views.xml
+│   ├── sale_views.xml
+│   └── dashboard.xml
+│
+├── reports/
+│   ├── report_action.xml
+│   └── sale_report.xml
+│
+└── data/
+    └── cron.xml

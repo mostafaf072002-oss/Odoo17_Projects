@@ -1,0 +1,55 @@
+<odoo>
+    <record id="plumbing_dashboard_view" model="ir.ui.view">
+        <field name="name">Plumbing Dashboard</field>
+        <field name="model">plumbing.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard">
+                <sheet class="dashboard_form">
+
+                    <div class="parent">
+                        <div class="header">
+                            <h1>Plumbing Store</h1>
+                        </div>
+
+                        <div class="nav">
+                            <h2 style="color:white;">Nav</h2>
+                            <button name="%(sale.action_orders)d"
+                                type="action"
+                                string="Sales"
+                                class="btn-primary"/>
+
+                            <button name="%(purchase.purchase_form_action)d"
+                                    type="action"
+                                    string="Purchase"
+                                    class="btn-secondary"/>
+
+                            <button name="%(product.product_template_action)d"
+                                    type="action"
+                                    string="Products"
+                                    class="btn-primary"/>
+                        </div>
+                        <div class="content">
+                            <img src="plumping_store/static/description/plumbing.jpg" alt="Img"/>
+                        </div>
+                        <div class="footer">
+                                <div class="hello">Hello</div>
+                                <div class="user">
+                                    <span>Developed By: </span><field name="user_id" readonly="1"/>
+                                </div>
+                        </div>
+
+                    </div>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_plumbing_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">plumbing.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

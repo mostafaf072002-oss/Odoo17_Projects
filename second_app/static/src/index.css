@@ -1,0 +1,118 @@
+
+/* Tree Page Style */
+.o_list_view {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    color: white;
+}
+
+.o_form_view {
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    padding: 10px;
+}
+
+.o_form_sheet {
+    width: 80%;
+}
+
+.o-mail-Chatter {
+    width: 10%;
+}
+
+/* Center the table */
+.todo_table .o_list_table {
+    width: 70% !important;
+    margin: 30px auto !important;   /* يخليه في النص */
+}
+
+/* Header styling */
+.todo_table .o_list_table thead th {
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Cells styling */
+.todo_table .o_list_table tbody tr td {
+    background-color: #1de9b6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.all_tasks_header {
+    text-align: center;
+    color: white;
+}
+
+.o_control_panel,
+.o-dropdown--menu,
+.breadcrumb,
+.o_form_button_cancel,
+.o_form_button_save {
+    background-color: #1de9b6;
+}
+
+.o_form_sheet {
+    width: 100%;
+}
+
+.dropdown-toggle {
+    background-image: url("static/description/icon.png");
+}
+
+.o_renderer {
+    background-color: #496b71;
+    color: black;
+}
+
+.o_kanban_record {
+    margin-top: 20px !important;
+}
+
+o_kanban_renderer .o_kanban_record {
+    position: relative;
+    margin: 25px !important;
+}
+
+.o_kanban_image {
+    margin-top: 20px !important;
+}
+
+.o_kanban_image img {
+    width: 100px !important;
+    height: 100px !important;
+
+    max-width: 200% !important;
+    position: relative;
+    bottom: 71px;
+    right: 26px;
+
+    border-radius: 50px;
+    object-fit: cover;
+
+    margin-top: 15px;
+}
+
+.p-2 {
+    margin-left: 68px !important;
+    padding: 17px !important;
+}
+
+.o_kanban_renderer.o_kanban_ungrouped .o_kanban_record {
+    margin-top: 30px !important;
+    margin-right: 30px!important;
+    margin-left: 20px!important;
+}
+
+.o_kanban_renderer .oe_kanban_card .oe_kanban_details,
+.o_kanban_renderer .o_kanban_record .oe_kanban_details {
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    min-width: 0;
+    padding-left: 78px !important;
+    line-height: 30px;
+}

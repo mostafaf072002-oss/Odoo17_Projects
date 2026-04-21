@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_quick_sale_order_wizard,access_quick_sale_order_wizard,model_quick_sale_order_wizard,,1,1,1,1
+access_plumbing_dashboard,access_plumbing_dashboard,model_plumbing_dashboard,,1,1,1,1
+access_product_sales_service,access_product_sales_service,model_product_sales_service,,1,1,1,1

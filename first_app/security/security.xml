@@ -1,0 +1,25 @@
+<odoo>
+    <record id="staff_category" model="ir.module.category">
+        <field name="name">Staff</field>
+    </record>
+
+    <record id="staff_manager_group" model="res.groups">
+        <field name="name">Staff Manager</field>
+        <field name="category_id" ref="first_app.staff_category"/>
+    </record>
+
+    <record id="staff_user_group" model="res.groups">
+        <field name="name">Staff User</field>
+        <field name="category_id" ref="first_app.staff_category"/>
+    </record>
+
+    <record id="staff_rule" model="ir.rule">
+        <field name="name">Staff Rule</field>
+        <field name="model_id" ref="first_app.model_staff_staff"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>

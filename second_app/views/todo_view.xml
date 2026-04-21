@@ -1,0 +1,166 @@
+<odoo>
+
+    <!-- ================== Tree View ================== -->
+    <record id="todo_view_tree" model="ir.ui.view">
+        <field name="name">todo.tree</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <tree string="All Tasks" class="todo_table">
+                <field name="name"/>
+                <field name="assign_to"/>
+                <field name="due_date"/>
+                <field name="status"/>
+                <field name="active"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="todo_view_form" model="ir.ui.view">
+        <field name="name">todo.form</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <widget name="web_ribbon" title="Completed" bg_color="text-bg-danger" invisible="status != 'completed'"/>
+
+                        <div class="oe_title">
+                            <label for="ref"/>
+                            <h1>
+                                <field name="ref"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                            <group>
+                                <field name="due_date"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                                <field name="type"/>
+                            </group>
+                        </group>
+
+                    <notebook>
+                        <page string="Assigns">
+                            <field name="assign_to"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids" widget="many2many_checkbox"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Search View ================== -->
+    <record id="todo_view_search" model="ir.ui.view">
+    <field name="name">todo.search</field>
+    <field name="model">todo.task</field>
+    <field name="arch" type="xml">
+        <search>
+
+            <!-- 🔎 Search by name -->
+            <field name="name"/>
+
+            <!-- 🔎 Search by assigned user -->
+            <field name="assign_to"/>
+
+            <field name="active"/>
+
+
+            <!-- 📌 Filters -->
+            <filter name="filter_done"
+                    string="Done"
+                    domain="[('status','=','done')]"/>
+
+
+            <filter name="filter_unarchive"
+                    string="Unarchive"
+                    domain="[('active','=',False)]"/>
+
+            <filter name="filter_pending"
+                    string="Pending"
+                    domain="[('status','=','pending')]"/>
+
+
+            <!-- 📊 Group By -->
+            <group expand="0" string="Group By">
+
+                <filter name="group_user"
+                        string="Assigned To"
+                        context="{'group_by':'assign_to'}"/>
+
+                <filter name="group_status"
+                        string="Status"
+                        context="{'group_by':'status'}"/>
+
+            </group>
+
+        </search>
+    </field>
+</record>
+
+    <!-- ================== Action ================== -->
+    <record id="todo_action" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">todo.task</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first task!
+            </p>
+        </field>
+    </record>
+
+    <!-- ================== Server Action ================== -->
+    <record id="completed_server_action" model="ir.actions.server">
+        <field name="name">Completed</field>
+        <field name="model_id" ref="model_todo_task"/>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_completed()
+        </field>
+    </record>
+
+    <!-- ================== Server Action ================== -->
+    <record id="change_status_wizard_server_action" model="ir.actions.server">
+        <field name="name">Change Status Wizard</field>
+        <field name="model_id" ref="model_todo_task"/>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="state">code</field>
+        <field name="code">action = records.change_status_action()</field>
+    </record>
+    <!-- ================== Automated Action ================== -->
+    <record id="check_due_date_cron" model="ir.cron">
+        <field name="name">Check Due Date</field>
+        <field name="model_id" ref="model_todo_task"/>
+        <field name="state">code</field>
+        <field name="code">model.action_check_due_date()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+
+    <!-- ================== Menu ================== -->
+    <menuitem
+        id="todo_menu_item"
+        name="All Tasks"
+        parent="todo_menu"
+        action="todo_action"
+    />
+</odoo>

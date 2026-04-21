@@ -1,0 +1,1 @@
+from . import quick_sales_order_wizard

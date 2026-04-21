@@ -1,0 +1,23 @@
+<odoo>
+    <!-- Root Menu -->
+    <menuitem
+        id="staff_management_root_menu"
+        name="Staff Management"
+        web_icon="first_app/static/description/icon.png"
+    />
+
+    <!-- Employee Menu -->
+    <menuitem
+        id="staff_menu"
+        name="Staffs"
+        parent="staff_management_root_menu"
+    />
+
+    <!-- Projects Menu -->
+    <menuitem
+        id="project_menu"
+        name="Projects"
+        parent="staff_management_root_menu"
+    />
+
+</odoo>

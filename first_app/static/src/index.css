@@ -1,0 +1,46 @@
+.o_list_view {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    color: white;
+}
+
+.o_form_sheet {
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    padding: 10px;
+}
+
+/* Center the table */
+.o_list_table {
+    width: 70% !important;
+    margin: 30px auto !important;   /* يخليه في النص */
+}
+
+/* Header styling */
+.o_list_table thead th {
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Cells styling */
+.project_table .o_list_table tbody tr td {
+    background-color: #1de9b6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.all_tasks_header {
+    text-align: center;
+    color: white;
+}
+
+.o_control_panel,
+.o-dropdown--menu,
+.breadcrumb,
+.o_form_button_cancel,
+.o_form_button_save {
+    background-color: #1de9b6;
+}

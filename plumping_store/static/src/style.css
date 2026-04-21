@@ -1,0 +1,170 @@
+.dashboard_form .o_form_sheet {
+    background-color: #6f42c1;
+}
+
+.dashboard_form h1 {
+    color: white;
+    text-align: center;
+}
+
+.btn-primary, .btn-secondary {
+    margin-left: 10px;
+}
+
+.o_list_view, .o_content {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(90deg, #6610f2, #6f42c1);
+    color: white;
+}
+
+.o_form_view .o_form_sheet {
+    background: linear-gradient(90deg, #6610f2, #6f42c1);
+    color: white;
+    padding: 10px;
+    border: none !important;
+}
+
+/* Center the table */
+.o_list_table {
+    width: 70% !important;
+    margin: 30px auto !important;   /* يخليه في النص */
+}
+
+/* Header styling */
+.o_list_table thead tr th, .o_list_table tfoot tr td {
+    background: linear-gradient(90deg, #6610f2, #6f42c1);
+    color: white !important;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Cells styling */
+.project_table .o_list_table tbody tr td {
+    background-color: #6f42c1;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.all_tasks_header {
+    text-align: center;
+    color: white;
+}
+
+.o_control_panel,
+.o-dropdown--menu,
+.breadcrumb,
+.o_form_button_cancel,
+.o_form_button_save {
+    background-color: #6f42c1;
+    color: white;
+}
+
+.dropdown-item, .o_control_panel_actions {
+    color: white !important;
+}
+
+.o_input, .o_wrap_field {
+    color: white !important;
+}
+
+.o_kanban_renderer,
+.o_input_dropdown .dropdown-item,
+select > option {
+    background: linear-gradient(90deg, #6610f2, #6f42c1) !important;
+}
+
+.o_kanban_renderer .o_kanban_record > div:not(.o_dropdown_kanban), .o_kanban_renderer .o_kanban_quick_create {
+    border: 1px solid var(--border-color, #dee2e6);
+    background-color: #6675ce;
+}
+
+option {
+    color: black !important;
+}
+
+.modal-content, .o_form_renderer {
+    background-color: #6f42c1 !important;
+}
+
+a {
+    color: black !important;
+}
+
+.o_form_view .o_form_uri > span:first-child {
+    color: whitesmoke;
+}
+
+.parent {
+    height: 500px;
+    box-sizing: border-box;
+    text-align: center;
+
+    display: grid;
+
+    /* تقسيم الأعمدة */
+    grid-template-columns: 25% 75%;
+
+    /* تقسيم الصفوف */
+    grid-template-rows: 10% 80% 10%;
+
+    height: 100vh; /* علشان النسب تشتغل صح */
+}
+
+/*.header,*/
+/*.nav,*/
+/*.content,*/
+/*.footer {*/
+/*    border: 1px solid darkblue;*/
+/*}*/
+
+/* Header ياخد الصف الأول كله */
+.header {
+  grid-column: span 2;
+}
+
+/* Nav في العمود الأول */
+.nav {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left !important;
+}
+
+.nav h2 {
+    padding-left: 25px;
+}
+
+.nav button {
+    width: 20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+/* Content في العمود الثاني */
+.content {
+  grid-column: span 1;
+  display: flex;
+  align-content: center;
+    justify-content: center;
+}
+
+.content img {
+    filter: blur(0%);
+}
+.content img:hover {
+    filter: blur(100%);
+}
+
+/* Footer ياخد الصف الأخير كله */
+.footer {
+  grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+
+
