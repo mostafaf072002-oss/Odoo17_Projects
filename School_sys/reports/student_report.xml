@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ── Report Action ──────────────────────── -->
+    <record id="action_report_student" model="ir.actions.report">
+        <field name="name">Student Profile</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_system.report_student_template</field>
+        <field name="report_file">school_system.report_student_template</field>
+        <field name="binding_model_id" ref="model_school_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- ── QWeb Template ──────────────────────── -->
+    <template id="report_student_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- Header -->
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <h2>Student Profile</h2>
+                                <h3><t t-esc="student.name"/></h3>
+                                <p><strong>ID: </strong><t t-esc="student.student_code"/></p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <p><strong>Class: </strong><t t-esc="student.classroom_id.name"/></p>
+                                <p><strong>Enrollment: </strong>
+                                    <t t-esc="student.enrollment_date" t-options='{"widget":"date"}'/>
+                                </p>
+                                <p><strong>Status: </strong><t t-esc="student.state"/></p>
+                            </div>
+                        </div>
+
+                        <!-- Personal Info -->
+                        <table class="table table-sm table-bordered">
+                            <thead><tr><th colspan="4" class="bg-light">Personal Information</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Gender</strong></td>
+                                    <td><t t-esc="student.gender"/></td>
+                                    <td><strong>Date of Birth</strong></td>
+                                    <td><t t-esc="student.date_of_birth" t-options='{"widget":"date"}'/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phone</strong></td>
+                                    <td><t t-esc="student.phone"/></td>
+                                    <td><strong>Email</strong></td>
+                                    <td><t t-esc="student.email"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Parent Name</strong></td>
+                                    <td><t t-esc="student.parent_name"/></td>
+                                    <td><strong>Parent Phone</strong></td>
+                                    <td><t t-esc="student.parent_phone"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Attendance Summary -->
+                        <h4 class="mt-4">Attendance Summary</h4>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th>Date</th><th>Status</th><th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="student.attendance_ids[:10]" t-as="att">
+                                    <tr>
+                                        <td><t t-esc="att.date" t-options='{"widget":"date"}'/></td>
+                                        <td><t t-esc="att.state"/></td>
+                                        <td><t t-esc="att.note"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <p>Attendance Rate: <strong><t t-esc="'%.1f' % student.attendance_rate"/>%</strong></p>
+
+                        <!-- Exam Results -->
+                        <h4 class="mt-4">Exam Results</h4>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th>Subject</th><th>Exam</th><th>Grade</th>
+                                    <th>Max</th><th>%</th><th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="student.exam_result_ids" t-as="res">
+                                    <tr>
+                                        <td><t t-esc="res.subject_id.name"/></td>
+                                        <td><t t-esc="res.exam_id.name"/></td>
+                                        <td><t t-esc="res.grade"/></td>
+                                        <td><t t-esc="res.max_grade"/></td>
+                                        <td><t t-esc="'%.1f' % res.percentage"/>%</td>
+                                        <td>
+                                            <span t-attf-class="badge #{res.result == 'pass' and 'bg-success' or 'bg-danger'}">
+                                                <t t-esc="res.result.upper()"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

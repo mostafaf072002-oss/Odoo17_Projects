@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="plumping_store.listView" owl="1" class="report_template">
+        <div class="product_report">
+            <h1>Product Report</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Sales Count</th>
+                        <th>Total Sales</th>
+                        <th>Total Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.results" t-as="record" t-key="record.product_name">
+                        <tr>
+                            <td>
+                                <t t-esc="record.product_name"/>
+                            </td>
+                            <td>
+                                <t t-esc="record.sales_count"/>
+                            </td>
+                            <td>
+                                <t t-esc="record.total_sales"/>
+                            </td>
+                            <td>
+                                <t t-esc="record.total_profit"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</templates>

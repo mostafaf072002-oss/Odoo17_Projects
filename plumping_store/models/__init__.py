@@ -1,1 +1,1 @@
-from . import product, sale, dashboard, product_sale
+from . import product, sale, dashboard

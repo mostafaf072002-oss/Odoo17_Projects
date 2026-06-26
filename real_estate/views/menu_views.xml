@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- ========== Root ==========   -->
+    <menuitem id="real_estate_root" name="Real Estate"
+              web_icon="real_estate/static/src/img/icon.png" />
+
+    <!-- ========== Child ==========   -->
+    <menuitem id="property_menu" name="Property" parent="real_estate_root" sequence="1" />
+    <menuitem id="dashboard_menu" name="Dashboard" parent="real_estate_root" action="real_estate.action_dashboard" sequence="2"/>
+
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="plumping_store.formView">
+        <div class="container p-3">
+
+            <h2>Create Product</h2>
+
+            <div class="mb-3">
+                <input type="text"
+                       t-model="state.name"
+                       placeholder="Enter product name"
+                       class="form-control"/>
+            </div>
+
+            <button class="btn btn-primary"
+                    t-on-click="createProduct"
+                    t-att-disabled="state.loading">
+                Create
+            </button>
+
+            <hr/>
+
+            <h3>Products List</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <t t-foreach="state.products" t-as="product" t-key="product.id">
+                        <tr>
+                            <td><t t-esc="product.name"/></td>
+                            <td>
+                                <button class="btn btn-danger btn-sm"
+                                        t-on-click="() => this.deleteRecord(product.id)">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+        </div>
+    </t>
+
+</templates>

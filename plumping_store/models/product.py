@@ -3,7 +3,6 @@ from odoo import models, fields, api
 
 _logger = logging.getLogger(__name__)
 
-
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
@@ -53,3 +52,4 @@ class ProductTemplate(models.Model):
             if vals.get('ref', 'New') == 'New':
                 vals['ref'] = self.env["ir.sequence"].next_by_code("product_seq") or "New"
         return super(ProductTemplate, self).create(vals_list)
+

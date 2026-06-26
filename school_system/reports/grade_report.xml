@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ════════ GRADE REPORT ════════ -->
+    <record id="action_report_grade" model="ir.actions.report">
+        <field name="name">Exam Grade Report</field>
+        <field name="model">school.exam</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_system.report_grade_template</field>
+        <field name="binding_model_id" ref="model_school_exam"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_grade_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="exam">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Exam Results: <t t-esc="exam.name"/></h2>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <p><strong>Subject: </strong><t t-esc="exam.subject_id.name"/></p>
+                                <p><strong>Class: </strong><t t-esc="exam.classroom_id.name"/></p>
+                                <p><strong>Date: </strong>
+                                    <t t-esc="exam.date" t-options='{"widget":"date"}'/>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p><strong>Type: </strong><t t-esc="exam.exam_type"/></p>
+                                <p><strong>Max Grade: </strong><t t-esc="exam.max_grade"/></p>
+                                <p><strong>Average: </strong>
+                                    <t t-esc="'%.1f' % exam.average_grade"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stats Bar -->
+                        <div class="row text-center mb-4">
+                            <div class="col-4 p-2 bg-light border">
+                                <h4><t t-esc="exam.total_students"/></h4>
+                                <small>Total Students</small>
+                            </div>
+                            <div class="col-4 p-2 bg-success text-white border">
+                                <h4><t t-esc="exam.pass_count"/></h4>
+                                <small>Passed</small>
+                            </div>
+                            <div class="col-4 p-2 bg-danger text-white border">
+                                <h4><t t-esc="exam.fail_count"/></h4>
+                                <small>Failed</small>
+                            </div>
+                        </div>
+
+                        <!-- Results Table -->
+                        <table class="table table-bordered table-sm">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Student</th>
+                                    <th>Grade</th>
+                                    <th>Percentage</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="exam.result_ids" t-as="r">
+                                    <tr>
+                                        <td><t t-esc="r_index + 1"/></td>
+                                        <td><t t-esc="r.student_id.name"/></td>
+                                        <td><t t-esc="r.grade"/></td>
+                                        <td><t t-esc="'%.1f' % r.percentage"/>%</td>
+                                        <td>
+                                            <span t-attf-class="badge #{r.result == 'pass' and 'bg-success' or 'bg-danger'}">
+                                                <t t-esc="r.result.upper()"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ════════ ATTENDANCE REPORT ════════ -->
+    <record id="action_report_attendance" model="ir.actions.report">
+        <field name="name">Attendance Report</field>
+        <field name="model">school.classroom</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_system.report_attendance_template</field>
+        <field name="binding_model_id" ref="model_school_classroom"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_attendance_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="cls">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Attendance Report — <t t-esc="cls.name"/></h2>
+                        <p>Academic Year: <t t-esc="cls.academic_year"/> |
+                           Teacher: <t t-esc="cls.teacher_id.name"/>
+                        </p>
+                        <table class="table table-bordered table-sm">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Total Days</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Late</th>
+                                    <th>Attendance %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="cls.student_ids" t-as="s">
+                                    <tr>
+                                        <td><t t-esc="s.name"/></td>
+                                        <td><t t-esc="len(s.attendance_ids)"/></td>
+                                        <td><t t-esc="len(s.attendance_ids.filtered(lambda a: a.state == 'present'))"/></td>
+                                        <td><t t-esc="len(s.attendance_ids.filtered(lambda a: a.state == 'absent'))"/></td>
+                                        <td><t t-esc="len(s.attendance_ids.filtered(lambda a: a.state == 'late'))"/></td>
+                                        <td>
+                                            <t t-esc="'%.1f' % s.attendance_rate"/>%
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- ════════ FEE REPORT ════════ -->
+    <record id="action_report_fee" model="ir.actions.report">
+        <field name="name">Fee Statement</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_system.report_fee_template</field>
+        <field name="binding_model_id" ref="model_school_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_fee_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Fee Statement</h2>
+                        <h3><t t-esc="student.name"/> —
+                            <t t-esc="student.student_code"/>
+                        </h3>
+                        <table class="table table-bordered table-sm">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Ref</th><th>Type</th><th>Amount</th>
+                                    <th>Due Date</th><th>Paid Date</th><th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="student.fee_ids" t-as="fee">
+                                    <tr>
+                                        <td><t t-esc="fee.name"/></td>
+                                        <td><t t-esc="fee.fee_type"/></td>
+                                        <td><t t-esc="fee.amount"/></td>
+                                        <td><t t-esc="fee.due_date" t-options='{"widget":"date"}'/></td>
+                                        <td><t t-esc="fee.payment_date" t-options='{"widget":"date"}'/></td>
+                                        <td>
+                                            <span t-attf-class="badge #{fee.state == 'paid' and 'bg-success' or fee.state == 'overdue' and 'bg-danger' or 'bg-warning'}">
+                                                <t t-esc="fee.state.upper()"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="2">Total</td>
+                                    <td><t t-esc="student.total_fees_due"/></td>
+                                    <td colspan="2">Paid</td>
+                                    <td><t t-esc="student.total_fees_paid"/></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

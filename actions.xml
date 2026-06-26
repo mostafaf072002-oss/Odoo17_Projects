@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    # ===================== Actions ===================== #
+    # ===================== act_window Action =====================#
+    <record id="" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="res_model"></field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    # ===================== server Action =====================#
+    <record id="" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="model_id" ref="model_"/>
+        <field name="state">code</field>
+        <field name="code">
+            records.
+        </field>
+    </record>
+
+    # ========= Email Template ========= #
+    <record id="email_template_property_sold" model="mail.template">
+        <field name="name"> </field>
+        <field name="model_id" ref=" "/>
+        <field name="subject"> </field>
+        <field name="email_to"> {{ object.env.user.email }} </field>
+        <field name="auto_delete" eval="True"/>
+        <field name="body_html">
+            <![CDATA[
+                <p> Hello Sir </p>
+                <p> Property Sold Success </p>
+            ]]>
+        </field>
+    </record>
+
+    # ========= report action ========= #
+    <record id="" model="ir.actions.report">
+        <field name="name"> </field>
+        <field name="model"> </field>
+        <field name="binding_model_id" ref="model_"/>
+        <field name="binding_type">report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name"> </field>
+    </record>
+
+    <template id="">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    html code
+                </t>
+            </t>
+        </t>
+    </template>
+
+    # ===================== Cron Action =====================#
+    <record id="" model="ir.cron">
+        <field name="name"> </field>
+        <field name="model_id" ref="model_"/>
+        <field name="state">code</field>
+        <field name="code">model.</field>
+        <field name="interval_number"> </field>
+        <field name="interval_type"> </field>
+        <field name="numbercall"> </field>
+        <field name="active" eval="True"/>
+    </record>
+
+    # ===================== client Action =====================#
+    <record id="" model="ir.actions.client">
+        <field name="name"> </field>
+        <field name="tag"> </field>
+    </record>
+
+</odoo>
+
+<!--
+- Kanban
+- Smart Buttons
+-->

@@ -1,0 +1,31 @@
+.o_action_manager {
+    background-color: #3e919f;
+}
+.product_report {
+    background-color: #eee;
+    width: 80%;
+    margin: 30px auto;
+    border: 1px solid darkred;
+    text-align: center;
+}
+.product_report h1 {
+    text-align: center;
+}
+.product_report table {
+    width: 80%;
+    margin: 10px auto;
+    border: 1px solid darkgray;
+}
+.product_report table th {
+    background-color: rgba(82, 204, 22, 0.54);
+    font-weight: bold;
+    border: 1px solid darkgray;
+    padding: 5px;
+}
+.product_report table tr td {
+    border: 1px solid darkgray;
+    padding: 5px;
+}
+.product_report table tr:nth-child(even) {
+    background-color: rgba(128, 197, 94, 0.54);
+}

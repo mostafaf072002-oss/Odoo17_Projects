@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="real_estate.dashboard_template">
+
+        <div class="my_dashboard">
+
+            <!-- =========================
+                 TITLE
+            ========================== -->
+
+            <h1>
+                Property Dashboard
+            </h1>
+
+            <!-- =========================
+                 FORM
+            ========================== -->
+
+            <h2>
+                Property Form
+            </h2>
+
+            <div class="p-3 property_form">
+
+                <div class="mb-3">
+
+                    <label>Name</label>
+
+                    <input
+                        t-model="state.name"
+                        placeholder="Enter Property Name"
+                    />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Selling Price</label>
+
+                    <input
+                        t-model="state.selling_price"
+                        placeholder="Enter Selling Price"
+                    />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Bedrooms</label>
+
+                    <input
+                        t-model="state.bedrooms"
+                        placeholder="Enter Bedrooms"
+                    />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Bathrooms</label>
+
+                    <input
+                        t-model="state.bathrooms"
+                        placeholder="Enter Bathrooms"
+                    />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Area</label>
+
+                    <input
+                        t-model="state.area"
+                        placeholder="Enter Area"
+                    />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Date Available</label>
+
+                    <input
+                        t-model="state.date_available"
+                        type="date"
+                    />
+
+                </div>
+
+            </div>
+
+            <!-- =========================
+                 BUTTONS
+            ========================== -->
+
+            <div class="footer">
+
+                <button
+                    t-on-click="createProperty"
+                    class="btn btn-primary"
+                >
+
+                    Create
+
+                </button>
+
+                <button
+                    t-on-click="cancel"
+                    class="btn btn-secondary"
+                >
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+            <!-- =========================
+                 TABLE
+            ========================== -->
+
+            <h2>
+                Properties
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Selling Price</th>
+
+                            <th>Bedrooms</th>
+
+                            <th>Bathrooms</th>
+
+                            <th>Area</th>
+
+                            <th>Date Available</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <t
+                            t-foreach="state.records"
+                            t-as="record"
+                            t-key="record.id"
+                        >
+
+                            <tr>
+
+                                <td>
+                                    <t t-esc="record.name"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="record.selling_price"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="record.bedrooms"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="record.bathrooms"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="record.area"/>
+                                </td>
+
+                                <td>
+                                    <t t-esc="record.date_available"/>
+                                </td>
+
+                            </tr>
+
+                        </t>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <h1>Dashboard</h1>
+
+            <div class="card-container">
+
+                <div class="item">
+                    <label>Total Sales</label>
+                    <h2>3200400</h2>
+                </div>
+
+                <div class="item">
+                    <label>Profits</label>
+                    <h2>1200360</h2>
+                </div>
+                <div class="item">
+                    <label>Num Employees</label>
+                    <h2>3000</h2>
+                </div>
+
+            </div>
+
+            <div class="dash-container">
+
+                <div class="chart_container">
+
+                    <canvas t-ref="pieChart"/>
+
+                </div>
+
+                <div class="chart_container">
+
+                    <canvas t-ref="barChart"/>
+
+                </div>
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

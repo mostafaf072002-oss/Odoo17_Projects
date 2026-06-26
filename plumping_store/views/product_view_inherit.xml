@@ -50,4 +50,9 @@
             <field name="state">code</field>
             <field name="code">records.check_low_stock()</field>
     </record>
+
+    <record id="form_view_action" model="ir.actions.client">
+        <field name="name">Form View</field>
+        <field name="tag">plumping_store.form_view</field>
+    </record>
 </odoo>

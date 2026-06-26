@@ -1,0 +1,10 @@
+.o_kanban_renderer.o_kanban_grouped {
+        --KanbanGroup-width: fit-content !important;
+        background-color:black !important;
+        color: white !important;
+
+}
+
+.property-kanban div {
+    padding-bottom: 5px !important;
+}

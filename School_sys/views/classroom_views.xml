@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Classroom, Subject, Attendance, Exam, Fee views are in teacher_views.xml -->
+<odoo>
+    <record id="action_school_classroom" model="ir.actions.act_window">
+        <field name="name">Classes</field>
+        <field name="res_model">school.classroom</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -7,6 +7,9 @@
         <field name="view_mode">kanban,tree,form</field>
     </record>
 
+
+
+
     <!-- ================== Menu ================== -->
     <menuitem
         id="staff_menu_item"
@@ -26,6 +29,7 @@
         </field>
     </record>
 
+
     <!-- ================= automation Action ================= -->
     <record id="cron_auto_make_manager" model="ir.cron">
         <field name="name">Auto Make Manager</field>
@@ -41,6 +45,7 @@
         <field name="numbercall">-1</field>
         <field name="active">1</field>
     </record>
+
 
 
     <record id="action_email_after_promotion" model="ir.actions.server">

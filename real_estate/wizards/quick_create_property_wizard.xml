@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--  Action  -->
+    <record id="action_property_wizard" model="ir.actions.act_window">
+        <field name="name">Quick Create Property</field>
+        <field name="res_model">wizard.real.estate.property</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="quick_create_property_wizard" name="Quick Create Property" parent="property_menu" action="action_property_wizard"/>
+
+    <!--  Form  -->
+    <record id="property_form_view_wizard" model="ir.ui.view">
+        <field name="name">Property</field>
+        <field name="model">wizard.real.estate.property</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="selling_price"/>
+                        <field name="date_available"/>
+                    </group>
+                    <group>
+                        <field name="bedrooms"/>
+                        <field name="bathrooms"/>
+                        <field name="area"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="create_property" type="object" string="Create"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

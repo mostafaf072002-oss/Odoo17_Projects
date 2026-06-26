@@ -10,6 +10,7 @@
           action="action_plumbing_dashboard"
           sequence="2"/>
 
+
     <menuitem id="menu_products"
               name="Products"
               parent="plumbing_root"
@@ -27,5 +28,20 @@
               parent="plumbing_root"
               action="purchase.purchase_form_action"
               sequence="5"/>
+
+    <menuitem id="menu_view"
+          name="Reports"
+          parent="plumbing_root"
+          sequence="6"/>
+
+<menuitem id="menu_list_view"
+          name="List View"
+          parent="menu_view"
+          action="list_view_action"/>
+
+    <menuitem id="menu_form_view"
+          name="Product Management"
+          parent="menu_view"
+          action="form_view_action"/>
 
 </odoo>

@@ -1,0 +1,39 @@
+school_system/
+├── __manifest__.py
+├── __init__.py
+│
+├── models/
+│   ├── student.py        ← Student + computed fields
+│   ├── teacher.py        ← Teacher + total students
+│   ├── classroom.py      ← Classroom + Subject
+│   ├── attendance.py     ← Attendance + SQL constraint
+│   ├── exam.py           ← Exam + ExamResult + stats
+│   ├── fee.py            ← Fee + overdue cron
+│   └── res_config_settings.py ← API keys in Settings
+│
+├── views/
+│   ├── student_views.xml ← Form, Tree, Kanban, Search
+│   ├── teacher_views.xml ← + Classroom, Subject, Attendance, Exam, Fee views
+│   ├── menu_views.xml    ← Full menu structure
+│   └── dashboard_views.xml
+│
+├── wizards/
+│   ├── attendance_wizard.py   ← Bulk attendance for full class
+│   └── grade_report_wizard.py ← Filter & print grade reports
+│
+├── reports/
+│   ├── student_report.xml     ← Student Profile PDF
+│   ├── grade_report.xml       ← Exam Results + Attendance + Fee PDFs
+│
+├── security/
+│   ├── school_security.xml    ← 3 Groups: Student / Teacher / Manager
+│   └── ir.model.access.csv    ← RBAC for all models
+│
+├── controllers/
+│   ├── internal_api.py   ← /api/school/* (auth=user, JSON-RPC)
+│   └── external_api.py   ← Webhooks + SMS + External DB sync
+│
+└── static/
+    ├── css/school_dashboard.css
+    └── js/school_dashboard.js  ← OWL Dashboard Component
+

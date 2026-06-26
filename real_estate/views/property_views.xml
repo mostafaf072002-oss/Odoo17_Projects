@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- ============ Action ============ -->
+    <record id="action_property" model="ir.actions.act_window">
+        <field name="name">Property</field>
+        <field name="res_model">real.estate.property</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- ============ Menu Item ============ -->
+    <menuitem id="property_item_menu" name="Properties" parent="property_menu" action="action_property"/>
+
+    <!-- ============ Tree View ============ -->
+    <record id="property_tree_view" model="ir.ui.view">
+        <field name="name">Property</field>
+        <field name="model">real.estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Properties">
+                <header>
+                    <button name="property_xlsx_report" type="object" string="Property Excel Report"/>
+                </header>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="bedrooms"/>
+                <field name="bathrooms"/>
+                <field name="area"/>
+                <field name="date_available"/>
+                <field name="state"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ============ Form View ============ -->
+    <record id="property_form_view" model="ir.ui.view">
+        <field name="name">Property</field>
+        <field name="model">real.estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Properties">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="set_draft" type="object" string="Draft"/>
+                    <button name="set_available" type="object" string="Available"/>
+                    <button name="set_sold" type="object" string="Sold"/>
+                    <button name="set_cancelled" type="object" string="Cancelled"/>
+                </header>
+                <div class="oe_title">
+                    <label for="name"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <h2>
+                        <field name="code"/>
+                    </h2>
+                </div>
+                <sheet>
+                    <group>
+
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                            <field name="date_available"/>
+                        </group>
+
+                        <group>
+                            <field name="bedrooms"/>
+                            <field name="bathrooms"/>
+                            <field name="area"/>
+                        </group>
+
+                        <group>
+                            <field name="img"/>
+                            <field name="active"/>
+                        </group>
+
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids" widget="many2many_checkbox"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========= Kanban View ========= -->
+    <record id="property_kanban_view" model="ir.ui.view">
+        <field name="name">real.estate.property.kanban</field>
+        <field name="model">real.estate.property</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <!-- Fields Used -->
+                <field name="img"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="selling_price"/>
+                <field name="bedrooms"/>
+                <field name="bathrooms"/>
+                <field name="area"/>
+                <field name="date_available"/>
+                <field name="state"/>
+                <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click oe_kanban_card"
+                            style="display:flex; align-items:center; gap:10px;">
+
+                            <img t-att-src="kanban_image('real.estate.property','img', record.id.raw_value)" style="width:120px !important; height:120px !important; object-fit:cover; border-radius:50%;"/>
+
+                            <div class="property-kanban">
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        <field name="name"/> (<field name="code"/>)
+                                    </strong>
+                                </div>
+
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        Selling Price :<field name="selling_price"/>
+                                    </strong>
+                                </div>
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        Area : <field name="area"/>
+                                    </strong>
+                                </div>
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        Date Available : <field name="date_available"/>
+                                    </strong>
+                                </div>
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        Bedrooms : <field name="bedrooms"/>
+                                    </strong>
+                                </div>
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        Bathrooms : <field name="bathrooms"/>
+                                    </strong>
+                                </div>
+                                <!-- ============== Name ========== -->
+                                <div>
+                                    <strong>
+                                        State : <field name="state"/>
+                                    </strong>
+                                </div>
+                                </div>
+
+                            </div>
+                        </t>
+                </templates>
+
+            </kanban>
+
+        </field>
+
+    </record>
+
+    <!-- ============ Search View ============ -->
+    <record id="property_search_view" model="ir.ui.view">
+        <field name="name">Property Search</field>
+        <field name="model">real.estate.property</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="area"/>
+                <field name="date_available"/>
+                <field name="state"/>
+
+                <!-- ===== Filters ==== -->
+                <filter string="Active" name="filter_active" domain="[('active','=',True)]"/>
+                <filter string="Available" name="filter_state_available" domain="[('state','=','available')]"/>
+
+                <group string="Group By">
+                    <filter string="State" name="group_by_state" context="{'group_by':'state'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- ========= Server Action ========= -->
+    <record id="action_property_mark_sold_binding" model="ir.actions.server">
+        <field name="name"> Mark Property Sold </field>
+        <field name="model_id" ref="real_estate.model_real_estate_property"/>
+        <field name="binding_model_id" ref="real_estate.model_real_estate_property"/>
+        <field name="state">code</field>
+        <field name="code"> records.sold_property() </field>
+    </record>
+
+    <!-- ========= Email Template ========= -->
+    <record id="email_template_property_sold" model="mail.template">
+        <field name="name"> Property Sold </field>
+        <field name="model_id" ref="real_estate.model_real_estate_property"/>
+        <field name="subject"> Property Sold Notification </field>
+        <field name="email_to"> {{ object.env.user.email }} </field>
+        <field name="auto_delete" eval="True"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>
+                    Hello <t t-out="object.env.user.name"/>
+                </p>
+
+                <p>
+                    Your property <strong> <t t-out="object.name"/> </strong> has been sold.
+                </p>
+
+            ]]>
+        </field>
+    </record>
+
+
+</odoo>
